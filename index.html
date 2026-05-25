@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfolio Clicker — Premium Financial Terminal</title>
+
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#0a0c0f" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Portfolio" />
+  <link rel="apple-touch-icon" href="icon.svg" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Syne:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+
+    <!-- TICKER TAPE -->
+    <div class="ticker" data-screen-label="Ticker">
+      <div class="ticker__label">LIVE · NL</div>
+      <div class="ticker__viewport">
+        <div class="ticker__track" id="ticker-track"></div>
+      </div>
+    </div>
+
+    <!-- PORTFOLIO HEADER -->
+    <header class="portfolio" data-screen-label="Portfolio">
+      <div class="portfolio__left">
+        <div class="portfolio__labels">
+          <div class="kpi">
+            <div class="kpi__label">Total Net Worth</div>
+            <div class="kpi__value" id="kpi-networth">€0</div>
+          </div>
+          <div class="kpi kpi--eps">
+            <div class="kpi__label">Earnings / Second</div>
+            <div class="kpi__value" id="kpi-eps">€0/s</div>
+          </div>
+        </div>
+        <div class="breakdown" id="breakdown-bar"></div>
+        <div class="breakdown__legend" id="breakdown-legend"></div>
+      </div>
+      <div class="portfolio__right">
+        <button class="icon-btn" id="reset-btn" title="Reset save">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- WORLD TABS -->
+    <nav class="tabs" id="tabs"></nav>
+
+    <!-- BODY: CLICKER + SHOP -->
+    <main class="body">
+      <section class="clicker-panel" id="clicker-panel" data-world="cash" data-screen-label="Clicker"></section>
+      <section class="shop" id="shop" data-screen-label="Shop"></section>
+    </main>
+
+  </div>
+
+  <!-- modal + toasts portals -->
+  <div id="modal-root"></div>
+  <div class="toasts" id="toasts"></div>
+
+  <script src="config.js"></script>
+  <script src="game.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js')
+          .catch(err => console.warn('SW registration failed:', err));
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Background -->
+  <rect width="512" height="512" fill="#0a0c0f"/>
+
+  <!-- Grid lines -->
+  <line x1="0" y1="170" x2="512" y2="170" stroke="#1e2430" stroke-width="1"/>
+  <line x1="0" y1="256" x2="512" y2="256" stroke="#1e2430" stroke-width="1"/>
+  <line x1="0" y1="340" x2="512" y2="340" stroke="#1e2430" stroke-width="1"/>
+  <line x1="128" y1="0" x2="128" y2="512" stroke="#1e2430" stroke-width="1"/>
+  <line x1="256" y1="0" x2="256" y2="512" stroke="#1e2430" stroke-width="1"/>
+  <line x1="384" y1="0" x2="384" y2="512" stroke="#1e2430" stroke-width="1"/>
+
+  <!-- Chart area fill (glow under line) -->
+  <polygon
+    points="56,400 128,300 210,330 300,190 400,240 456,120 456,420 56,420"
+    fill="#22c55e" opacity="0.06"/>
+
+  <!-- Rising chart line -->
+  <polyline
+    points="56,400 128,300 210,330 300,190 400,240 456,120"
+    fill="none" stroke="#22c55e" stroke-width="18"
+    stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Live dot at tip -->
+  <circle cx="456" cy="120" r="14" fill="#22c55e"/>
+  <circle cx="456" cy="120" r="26" fill="#22c55e" opacity="0.20"/>
+
+  <!-- Bottom axis -->
+  <line x1="44" y1="428" x2="468" y2="428" stroke="#2a3142" stroke-width="2"/>
+
+  <!-- Euro mark — bottom left -->
+  <text x="52" y="490" font-family="monospace" font-size="32" font-weight="700"
+        fill="#444c5c" letter-spacing="2">€ PORTFOLIO</text>
+</svg>

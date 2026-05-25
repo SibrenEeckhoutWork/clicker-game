@@ -1,0 +1,42 @@
+{
+  "name": "Portfolio Clicker — Premium Financial Terminal",
+  "short_name": "Portfolio",
+  "description": "Bouw je financieel imperium over 4 vermogenscategorieën: Cash, Crypto, Stocks en Real Estate.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0a0c0f",
+  "theme_color": "#0a0c0f",
+  "categories": ["games", "finance"],
+  "lang": "nl",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-maskable.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "Cash World",
+      "short_name": "Cash",
+      "description": "Open Cash world",
+      "url": "./index.html#cash"
+    },
+    {
+      "name": "Crypto World",
+      "short_name": "Crypto",
+      "description": "Open Crypto world",
+      "url": "./index.html#crypto"
+    }
+  ]
+}
