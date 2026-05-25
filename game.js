@@ -123,7 +123,7 @@ function save() {
 }
 
 function resetGame() {
-  if (!confirm('Weet je het zeker? Dit wist alles.')) return;
+  if (!confirm('Are you sure? This will erase all progress.')) return;
   localStorage.removeItem(SAVE_KEY);
   state = newGame();
   fullRender();
@@ -336,7 +336,7 @@ function showUnlockModal() {
     <div class="modal-backdrop" id="modal-backdrop">
       <div class="modal">
         <div class="modal__icon">${ICONS[def.icon]}</div>
-        <div class="modal__eyebrow">Nieuwe vermogenscategorie ontgrendeld</div>
+        <div class="modal__eyebrow">New asset class unlocked</div>
         <h2 class="modal__title">${def.name}</h2>
         <p class="modal__desc">${def.description}</p>
         <div class="modal__stats">
@@ -512,7 +512,7 @@ function renderClicker() {
         <div class="world-stat__value">${fmt(clickYield)}</div>
       </div>
       <div class="world-stat">
-        <div class="world-stat__label">Verdiend hier</div>
+        <div class="world-stat__label">Earned here</div>
         <div class="world-stat__value">${fmt(earnedHere)}</div>
       </div>
     </div>
@@ -561,16 +561,16 @@ function renderShop() {
         </div>
         <div class="asset__info">
           <div class="asset__name">${locked ? '???' : a.name}</div>
-          ${locked ? `<div class="asset__meta"><span>Vrijgespeeld bij vorige asset</span></div>` :
+          ${locked ? `<div class="asset__meta"><span>Unlocked after previous asset</span></div>` :
           `<div class="asset__meta">
             <span>${fmtRate(eps)}/unit</span>
-            ${owned > 0 ? `<span class="total">${fmtRate(totalEps)} totaal</span>` : ''}
+            ${owned > 0 ? `<span class="total">${fmtRate(totalEps)} total</span>` : ''}
           </div>
           <div class="asset__flavour">${a.flavour}</div>`}
         </div>
         <div class="asset__buy">
           <button class="buy-btn" ${(can && !locked) ? '' : 'disabled'}>
-            <span class="buy-btn__label">${locked ? 'Locked' : 'Koop'}</span>
+            <span class="buy-btn__label">${locked ? 'Locked' : 'Buy'}</span>
             <span class="buy-btn__price">${locked ? '— —' : fmt(cost)}</span>
           </button>
         </div>
@@ -597,7 +597,7 @@ function renderShop() {
         <div class="upgrade__icon">${ICONS.bolt}</div>
         <div class="upgrade__name">${u.name}</div>
         <div class="upgrade__desc">${u.desc}</div>
-        <div class="upgrade__price">${owned ? 'Geactiveerd' : fmt(u.cost)}</div>
+        <div class="upgrade__price">${owned ? 'Active' : fmt(u.cost)}</div>
       `;
       if (!owned && can) card.addEventListener('click', () => buyUpgrade(wid, u.id));
       grid.appendChild(card);
@@ -675,8 +675,8 @@ function applyOfflineProgress() {
   el.innerHTML = `
     <div class="toast__icon" style="color:var(--accent)">${ICONS.spark}</div>
     <div class="toast__body">
-      <div class="toast__eyebrow" style="color:var(--accent)">Welkom terug</div>
-      <div class="toast__name">Je portfolio groeide met ${fmt(earned)}</div>
+      <div class="toast__eyebrow" style="color:var(--accent)">Welcome back</div>
+      <div class="toast__name">Your portfolio grew by ${fmt(earned)} while you were away</div>
     </div>
   `;
   container.appendChild(el);
